@@ -12,4 +12,9 @@ public class SQS implements IServiceOffering {
     public String getOffering() {
         return "/sqs";
     }
+    
+    @Override
+    public void runCommand(String data) {
+
+    }
 }
