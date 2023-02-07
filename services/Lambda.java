@@ -12,4 +12,9 @@ public class Lambda implements IServiceOffering {
     public String getOffering() {
         return "/lambda";
     }
+    
+    @Override
+    public void runCommand(String data) {
+        aws lambda update-function-code --function-name my-function --zip-file fileb:data//my-function.zip
+    }
 }
