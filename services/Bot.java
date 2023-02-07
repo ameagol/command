@@ -12,4 +12,9 @@ public class Bot implements IServiceOffering {
     public String getOffering() {
         return "/products/bot-services/";
     }
+
+    @Override
+    public void runCommand(String data) {
+
+    }
 }

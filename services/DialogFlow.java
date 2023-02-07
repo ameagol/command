@@ -12,4 +12,9 @@ public class DialogFlow implements IServiceOffering {
     public String getOffering() {
         return "/dialogflow";
     }
+
+    @Override
+    public void runCommand(String data) {
+
+    }
 }

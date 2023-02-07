@@ -12,4 +12,9 @@ public class Vertex implements IServiceOffering {
     public String getOffering() {
         return "/vertex-ai";
     }
+
+    @Override
+    public void runCommand(String data) {
+
+    }
 }

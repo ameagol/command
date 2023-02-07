@@ -14,7 +14,7 @@ public class Commander {
     private Set<ICloudProvider> cloudProviders = new HashSet<>();
     private Set<IServiceOffering> serviceOfferings = new HashSet<>();
 
-    public String getCloudService(String cloud, String service){
+    public void invokeService(String cloud, String service){
 
         this.cloudProviders.add(new Amazon());
         this.cloudProviders.add(new Google());
@@ -27,17 +27,14 @@ public class Commander {
         serviceOfferings.add(new SQS());
         serviceOfferings.add(new Vertex());
 
-        String cloudBase = this.cloudProviders.stream()
-                .filter( c -> c.detect(cloud))
-                .map(p -> p.getProvider())
-                .findFirst().orElseThrow();
-
-        String servicePath =  this.serviceOfferings.stream()
-                .filter( c -> c.detect(service))
-                .map(p -> p.getOffering())
-                .findFirst().orElseThrow();
-
-        return cloudBase.concat(servicePath);
+        this.cloudProviders.stream()
+            .filter( provider -> provider.detect(cloud))
+            .map(provider -> provider.getProvider())
+            .findFirst()
+            .ifPresent(cloudProvider -> this.serviceOfferings.stream()
+                .filter( serviceOffer -> serviceOffer.detect(service))
+                .findFirst()
+                .ifPresent(serviceOffer -> serviceOffer.runCommand(cloudProvider)));
     }
 
 }

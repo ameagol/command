@@ -7,8 +7,8 @@ public class Main {
 //
 //        System.out.println(getCloudData(cloudProvider, serviceProvider));
 
-        Commander c = new Commander();
-        System.out.println(c.getCloudService("azzure", "lambda"));
+        Commander commander = new Commander();
+        commander.invokeService("azzure", "lambda");
 
     }
 

@@ -14,4 +14,9 @@ public class Bastion implements IServiceOffering  {
     public String getOffering() {
         return "/services/azure-bastion/";
     }
+
+    @Override
+    public void runCommand(String data) {
+
+    }
 }
